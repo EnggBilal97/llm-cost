@@ -1,0 +1,61 @@
+{
+  "name": "llm-cost",
+  "version": "0.1.0",
+  "description": "Count tokens and estimate LLM API costs across OpenAI, Anthropic, Google, and Mistral. Zero dependencies, TypeScript, CLI included.",
+  "keywords": [
+    "llm",
+    "openai",
+    "anthropic",
+    "claude",
+    "gpt",
+    "gemini",
+    "token",
+    "tokens",
+    "tokenizer",
+    "cost",
+    "pricing",
+    "token-counter",
+    "cost-estimation",
+    "ai"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "llm-cost": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "node --test",
+    "cli": "node dist/cli.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "author": "Muhammad Bilal <engg.bilal97@gmail.com> (https://github.com/EnggBilal97)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EnggBilal97/llm-cost.git"
+  },
+  "homepage": "https://github.com/EnggBilal97/llm-cost#readme",
+  "bugs": {
+    "url": "https://github.com/EnggBilal97/llm-cost/issues"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "typescript": "^5.6.0"
+  }
+}
