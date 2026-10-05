@@ -4,6 +4,7 @@ import {
   countTokens,
   estimateCost,
   estimateCostFromText,
+  formatCost,
   getPricing,
   listModels,
 } from "../dist/index.js";
@@ -58,6 +59,13 @@ test("estimateCost caps cached tokens at input tokens", () => {
 
 test("estimateCost throws on unknown model", () => {
   assert.throws(() => estimateCost({ model: "ghost-model", inputTokens: 10 }));
+});
+
+test("formatCost renders zero, sub-cent, and larger amounts", () => {
+  assert.equal(formatCost(0), "$0.00");
+  assert.equal(formatCost(-5), "$0.00");
+  assert.equal(formatCost(0.001542), "$0.001542");
+  assert.equal(formatCost(12.5), "$12.5000");
 });
 
 test("estimateCostFromText estimates tokens then cost", () => {

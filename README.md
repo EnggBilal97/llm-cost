@@ -91,6 +91,19 @@ listModels();                    // ["gpt-4o", "gpt-4o-mini", ...]
 PRICING;                         // the full table
 ```
 
+### `formatCost(usd)`
+
+Format a USD amount the way the CLI does — 6 decimals for sub-cent costs, 4
+otherwise. Handy for logs and dashboards.
+
+```ts
+import { formatCost } from "llm-cost";
+
+formatCost(0.001542); // "$0.001542"
+formatCost(12.5);     // "$12.5000"
+formatCost(0);        // "$0.00"
+```
+
 ## CLI
 
 ```bash

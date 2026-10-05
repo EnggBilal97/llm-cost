@@ -13,3 +13,4 @@ export {
   type ModelPricing,
   type Provider,
 } from "./pricing.js";
+export { formatCost } from "./format.js";

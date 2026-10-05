@@ -2,6 +2,7 @@
 import { countTokens } from "./tokens.js";
 import { estimateCost } from "./cost.js";
 import { getPricing, listModels, PRICING } from "./pricing.js";
+import { formatCost } from "./format.js";
 
 interface Args {
   model?: string;
@@ -56,12 +57,6 @@ function parse(argv: string[]): Args {
 
   if (positional.length) args.text = positional.join(" ");
   return args;
-}
-
-function fmtUsd(n: number): string {
-  if (n === 0) return "$0.00";
-  if (n < 0.01) return `$${n.toFixed(6)}`;
-  return `$${n.toFixed(4)}`;
 }
 
 const HELP = `llm-cost — count tokens and estimate LLM API costs
@@ -165,10 +160,10 @@ function main(): void {
       (result.tokens.cachedInput ? ` + ${result.tokens.cachedInput} cached` : "") +
       ` / ${result.tokens.output} out`,
   );
-  console.log(`Input:   ${fmtUsd(result.inputCost)}`);
-  if (result.tokens.cachedInput) console.log(`Cached:  ${fmtUsd(result.cachedInputCost)}`);
-  console.log(`Output:  ${fmtUsd(result.outputCost)}`);
-  console.log(`Total:   ${fmtUsd(result.totalCost)}`);
+  console.log(`Input:   ${formatCost(result.inputCost)}`);
+  if (result.tokens.cachedInput) console.log(`Cached:  ${formatCost(result.cachedInputCost)}`);
+  console.log(`Output:  ${formatCost(result.outputCost)}`);
+  console.log(`Total:   ${formatCost(result.totalCost)}`);
 }
 
 main();
